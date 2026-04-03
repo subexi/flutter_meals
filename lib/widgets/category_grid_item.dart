@@ -5,15 +5,17 @@ class CategoryGridItem extends StatelessWidget {
   const CategoryGridItem({
     super.key,
     required this.category,
+    this.onSelectCategory,
   });
 
   final Category category;
+  final void Function()? onSelectCategory;
 
   @override
   Widget build(BuildContext context) {
     // Todo: Add navigation to the category meals screen
     return InkWell(
-      onTap: () {},
+      onTap: onSelectCategory,
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(16),
       child: Container(
