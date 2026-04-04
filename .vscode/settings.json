@@ -1,6 +1,11 @@
 {
-    "editor.tokenColorCustomizations": {
-        "comments": "",
-        "textMateRules": []
+    "[dart]": {
+        "editor.defaultFormatter": "Dart-Code.dart-code",
+        "editor.formatOnSave": false,
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        }
     }
 }

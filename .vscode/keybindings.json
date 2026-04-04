@@ -1,0 +1,12 @@
+[
+  {
+    "key": "cmd+k cmd+f",
+    "command": "-editor.action.formatSelection",
+    "when": "editorTextFocus && !editorReadonly && editorHasSelection && editorLangId == dart"
+  },
+  {
+    "key": "cmd+k cmd+f",
+    "command": "editor.action.formatDocument",
+    "when": "editorTextFocus && !editorReadonly && editorLangId == dart"
+  }
+]

@@ -1,30 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
+import 'package:meals/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 // Reusable UI element for displaying a single meal.
 class MealItem extends StatelessWidget {
-    const MealItem({
-    super.key,
-    required this.meal,
-  });
+  const MealItem({super.key, required this.meal});
 
   // Meal data used to render this item.
   final Meal meal;
+
+  // Converts the meal's complexity enum to a user-friendly string.
+  String get complexityText {
+    return meal.complexity.name[0].toUpperCase() +
+        meal.complexity.name.substring(1);
+  }
+
+  // Converts the meal's affordability enum to a user-friendly string.
+  String get affordabilityText {
+    return meal.affordability.name[0].toUpperCase() +
+        meal.affordability.name.substring(1);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(8),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       // Clip the content to match the rounded corners of the card
       clipBehavior: Clip.hardEdge,
       elevation: 2,
       child: InkWell(
-        onTap: () {
-        },
+        onTap: () {},
         child: Stack(
           children: [
             FadeInImage(
@@ -61,12 +68,30 @@ class MealItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     Row(
-                      children: []
-                    )
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        MealItemTrait(
+                          icon: Icons.schedule,
+                          label: '${meal.duration} min',
+                        ),
+                        const SizedBox(width: 12),
+
+                        MealItemTrait(
+                          icon: Icons.work,
+                          label: complexityText,
+                        ),
+                        const SizedBox(width: 12),
+
+                        MealItemTrait(
+                          icon: Icons.attach_money,
+                          label: affordabilityText,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
