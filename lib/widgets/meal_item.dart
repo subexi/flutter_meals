@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
+import 'package:meals/screens/meal_details.dart';
 import 'package:meals/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 // Reusable UI element for displaying a single meal.
 class MealItem extends StatelessWidget {
-  const MealItem({super.key, required this.meal});
+  const MealItem({
+    super.key,
+    required this.meal
+  });
 
   // Meal data used to render this item.
   final Meal meal;
@@ -22,6 +26,16 @@ class MealItem extends StatelessWidget {
         meal.affordability.name.substring(1);
   }
 
+  // Navigates to the meal details screen when the meal item is tapped.
+  void _selectMeal(BuildContext context) {
+    Navigator.of(
+      context,
+    ).push(
+      MaterialPageRoute(builder: (ctx) => MealDetailsScreen(meal: meal))
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -31,7 +45,9 @@ class MealItem extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       elevation: 2,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          _selectMeal(context);
+        },
         child: Stack(
           children: [
             FadeInImage(
@@ -76,10 +92,7 @@ class MealItem extends StatelessWidget {
                         ),
                         const SizedBox(width: 12),
 
-                        MealItemTrait(
-                          icon: Icons.work,
-                          label: complexityText,
-                        ),
+                        MealItemTrait(icon: Icons.work, label: complexityText),
                         const SizedBox(width: 12),
 
                         MealItemTrait(
