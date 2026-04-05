@@ -51,7 +51,7 @@ class MealsScreen extends StatelessWidget {
         itemBuilder: (ctx, index) => MealItem(
           meal: meals[index]
         ),
-        );
+      );
     }
 
     return Scaffold(
