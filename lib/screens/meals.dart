@@ -5,10 +5,12 @@ import 'package:meals/widgets/meal_item.dart';
 class MealsScreen extends StatelessWidget {
   const MealsScreen({
     super.key,
-    required this.title,
-    required this.meals,});
-
-  final String title;
+    this.title,
+    required this.meals,
+  });
+  // The title is optional, because we also want to use this screen to display the favorite meals, 
+  // which don't have a category title.
+  final String? title;
   final List<Meal> meals;
 
   @override
@@ -53,10 +55,14 @@ class MealsScreen extends StatelessWidget {
         ),
       );
     }
+    // If no title is provided, we don't want to display an app bar at all.
+    if (title == null) {
+      return content;
+    }
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(title!),
       ),
       body: content,
     );
