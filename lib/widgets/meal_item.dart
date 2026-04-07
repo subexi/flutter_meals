@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
-import 'package:meals/screens/meal_details.dart';
 import 'package:meals/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -8,11 +7,13 @@ import 'package:transparent_image/transparent_image.dart';
 class MealItem extends StatelessWidget {
   const MealItem({
     super.key,
-    required this.meal
+    required this.meal,
+    required this.onSelectMeal,
   });
 
   // Meal data used to render this item.
   final Meal meal;
+  final void Function() onSelectMeal;
 
   // Converts the meal's complexity enum to a user-friendly string.
   String get complexityText {
@@ -26,15 +27,6 @@ class MealItem extends StatelessWidget {
         meal.affordability.name.substring(1);
   }
 
-  // Navigates to the meal details screen when the meal item is tapped.
-  void _selectMeal(BuildContext context) {
-    Navigator.of(
-      context,
-    ).push(
-      MaterialPageRoute(builder: (ctx) => MealDetailsScreen(meal: meal))
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -44,9 +36,7 @@ class MealItem extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       elevation: 2,
       child: InkWell(
-        onTap: () {
-          _selectMeal(context);
-        },
+        onTap: onSelectMeal,
         child: Stack(
           children: [
             FadeInImage(

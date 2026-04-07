@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
+import 'package:meals/screens/meal_details.dart';
 import 'package:meals/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
@@ -7,11 +8,25 @@ class MealsScreen extends StatelessWidget {
     super.key,
     this.title,
     required this.meals,
+    required this.onToggleFavorite,
   });
-  // The title is optional, because we also want to use this screen to display the favorite meals, 
+  // The title is optional, because we also want to use this screen to display the favorite meals,
   // which don't have a category title.
   final String? title;
   final List<Meal> meals;
+  final void Function(Meal meal) onToggleFavorite;
+
+  // Navigates to the meal details screen when the meal item is tapped.
+  void selectMeal(BuildContext context, Meal meal) {
+    Navigator.of(
+      context,
+    ).push(
+      MaterialPageRoute(builder: (ctx) => MealDetailsScreen(
+        meal: meal,
+        onToggleFavorite: onToggleFavorite,
+      )),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +66,10 @@ class MealsScreen extends StatelessWidget {
       content = ListView.builder(
         itemCount: meals.length,
         itemBuilder: (ctx, index) => MealItem(
-          meal: meals[index]
+          meal: meals[index],
+          onSelectMeal: () {
+            selectMeal(context, meals[index]);
+          },
         ),
       );
     }
