@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
-class FilterScreen extends StatefulWidget {
-  const FilterScreen({super.key});
+/* import 'package:meals/widgets/main_drawer.dart';
+import 'package:meals/screens/tabs.dart'; */
+
+class FiltersScreen extends StatefulWidget {
+  const FiltersScreen({super.key});
 
   @override
-  State<FilterScreen> createState() => _FilterScreenState();
+  State<FiltersScreen> createState() => _FiltersScreenState();
 }
 
-class _FilterScreenState extends State<FilterScreen> {
+class _FiltersScreenState extends State<FiltersScreen> {
 var _glutenFreeFilterSet = false;
 
 
@@ -17,6 +20,19 @@ var _glutenFreeFilterSet = false;
       appBar: AppBar(
         title: const Text('Your Filters'),
       ),
+      /* drawer: MainDrawer(
+        onSelectScreen: (identifier) {
+          Navigator.of(context).pop();
+          if (identifier == 'meals') {
+            // Navigate back to the TabsScreen when 'meals' is selected
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (ctx) => const TabsScreen(),
+              ),
+            );
+          }
+        },
+      ), */
       body: Column(
         children: [
           SwitchListTile(
