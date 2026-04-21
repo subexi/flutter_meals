@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /* import 'package:meals/widgets/main_drawer.dart';
 import 'package:meals/screens/tabs.dart'; */
 
-enum Filters {
+enum Filter {
   gluten,
   lactose,
   vegetarian,
@@ -49,10 +49,10 @@ var _veganFilterSet = false;
         onPopInvokedWithResult: (bool didPop, dynamic result) {
           if(didPop) return;
             Navigator.of(context).pop({
-              Filters.gluten: _glutenFreeFilterSet,
-              Filters.lactose: _lactoseFreeFilterSet,
-              Filters.vegetarian: _vegetarianFilterSet,
-              Filters.vegan: _veganFilterSet,
+              Filter.gluten: _glutenFreeFilterSet,
+              Filter.lactose: _lactoseFreeFilterSet,
+              Filter.vegetarian: _vegetarianFilterSet,
+              Filter.vegan: _veganFilterSet,
             }); // Pass the filter settings back when popping the screen
           }, // Prevent popping the screen without passing the filter settings
 
