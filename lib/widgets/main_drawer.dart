@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
-  const MainDrawer({
-    super.key,
-    required this.onSelectScreen,
-  });
+  const MainDrawer({super.key, required this.onSelectScreen});
 
   final void Function(String identifier) onSelectScreen;
 
@@ -19,7 +16,10 @@ class MainDrawer extends StatelessWidget {
               gradient: LinearGradient(
                 colors: [
                   Theme.of(context).colorScheme.primaryContainer,
-                  Theme.of(context).colorScheme.primaryContainer.withAlpha(200),
+                  Theme.of(context)
+                      .colorScheme
+                      .primaryContainer
+                      .withAlpha(204),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -36,8 +36,8 @@ class MainDrawer extends StatelessWidget {
                 Text(
                   'Cooking Up!',
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                 ),
               ],
             ),
@@ -51,12 +51,10 @@ class MainDrawer extends StatelessWidget {
             title: Text(
               'Meals',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+                    color: Theme.of(context).colorScheme.onSurface,
+                    fontSize: 24,
+                  ),
             ),
-
             onTap: () {
               onSelectScreen('meals');
             },
@@ -70,12 +68,10 @@ class MainDrawer extends StatelessWidget {
             title: Text(
               'Filters',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+                    color: Theme.of(context).colorScheme.onSurface,
+                    fontSize: 24,
+                  ),
             ),
-
             onTap: () {
               onSelectScreen('filters');
             },

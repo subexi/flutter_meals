@@ -68,7 +68,7 @@ const dummyMeals = [
     affordability: Affordability.affordable,
     complexity: Complexity.simple,
     imageUrl:
-        'https://cdn.pixabay.com/photo/2018/07/18/19/12/spaghetti-3547078_1280.jpg',
+        'https://i.etsystatic.com/27457935/r/il/829098/7894545054/il_340x270.7894545054_su6t.jpg',
     duration: 20,
     ingredients: [
       '4 Tomatoes',

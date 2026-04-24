@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meals/data/dummy_data.dart';
 import 'package:meals/screens/categories.dart';
 
 // import 'package:meals/main.dart';
@@ -20,6 +21,7 @@ void main() {
         home: Scaffold(
           body: CategoriesScreen(
             onToggleFavorite: (meal) {},
+            availableMeals: dummyMeals,
           ),
         ),
       ),
